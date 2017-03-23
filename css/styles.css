@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.time{
+    display: inline-block;
+}
+
+.controls{
+    background-color: rgb(230,230,230);
+    display:flex;
+}
+
+.controls > *{
+    margin-right: 20px;
+}
+
+.playbackBar{
+    width: 400px;           /* tutaj nie działa ? inlinowo działa */
+    cursor: pointer;        /* tutaj nie działa ? inlinowo działa */
+}

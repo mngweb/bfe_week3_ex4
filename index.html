@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form>
+            <input type="text"/>
+            <button>Wyslij</button>
+        </form>
+
+
+        <div id="videoPlayer" class="videoPlayer">
+
+            <video id="video" width="100%">
+                <source src="files/carsonbridge.mp4" type="video/mp4" />
+                <source src="files/carsonbridge.webm" type="video/webm" />
+            </video>
+
+
+            <div class="controls">
+
+                <button id="playButton">
+                    <i class="fa fa-play"></i>
+                    Play
+                </button>
+
+                <input type="range" id="playbackBar" min="0" value="0" step=".05">
+
+                <div class="time">
+                    <span class="currentTime">0:00</span> / <span class="totalTime">0:00</span>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
