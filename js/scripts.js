@@ -23,12 +23,12 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
     - przy niektórych wczytaniach strony działa czyli input nabiera większej szerokosc i w czasie odtwarzania suwak przechodzi po całym pasku,
     - a przy niektórych wczytaniach strony nie działa czyli tzn. input jest normalny, ale w czasie odtwarzania suwak przechodzi tylko po części pasku (tak jakby jakaś wewnętrzna składowa przeglądarkowego inputa związana z tym jaką trasę maksymalnie pokonuje suwak się skróciła. Dlatego też wtedy nie działa dobrze przesuwanie suwaka po tak krótkim fragmencie aby móc odtworzyć film w dalszym momencie).
 
-    Poza tym gdy próbowałam przypisać szerokość w pliku css, to wpływało to na realną szerokość tego inputa typu range - dlaczego?
+    Poza tym gdy próbowałam przypisać szerokość w pliku css, to nie wpływało to na realną szerokość tego inputa typu range - dlaczego?
     */
 
-    video.onloadedmetadata = function(){
-        playbackBar.style.width = 0.8*video.offsetWidth + "px";
-    }
+    //video.onloadedmetadata = function(){
+    //    playbackBar.style.width = 0.8*video.offsetWidth + "px";
+    //}
 
 
     playButton.onclick = function(){
@@ -43,9 +43,9 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             video.play();
 
             // WERSJA 1:
-            i.classList.remove("fa-play"); 
+            i.classList.remove("fa-play");
             i.classList.add("fa-pause");
-            this.value = "Pause";
+            this.querySelector("span").textContent = "Pause";
 
             // WERSJA 2:
             // this.innerHTML = "<i class='fa fa-pause'></i>Pause</i>";
@@ -55,8 +55,8 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
 
             // WERSJA 1:
             i.classList.remove("fa-pause");
-            i.classList.add("fa-play");  
-            this.value = "Play";         
+            i.classList.add("fa-play");
+            this.querySelector("span").textContent = "Play";        
 
             // WERSJA 2:
             // this.innerHTML = "<i class='fa fa-play'></i>Play</i>";
@@ -104,5 +104,9 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
     video.addEventListener("durationchange", function(){
         totalTime.innerHTML = formatTime(video.duration);
     }, false);
+    
+    // video.addEventListener("canplay", function(){
+    //     totalTime.innerHTML = formatTime(video.duration);
+    // }, false);
 
 })();
