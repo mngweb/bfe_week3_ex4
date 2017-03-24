@@ -23,7 +23,15 @@
     margin-right: 20px;
 }
 
+.playbackBarContainer{
+    width: 70%;
+}
+
 .playbackBar{
-    width: 400px;           /* tutaj nie działa ? inlinowo działa */
-    cursor: pointer;        /* tutaj nie działa ? inlinowo działa */
+    display: block;
+    width: 100%;
+}
+
+.time{
+    white-space: nowrap;
 }
