@@ -21,15 +21,16 @@
                 <source src="files/carsonbridge.webm" type="video/webm" />
             </video>
 
-
-            <div class="controls">
+           <div class="controls">
 
                 <button id="playButton">
                     <i class="fa fa-play"></i>
-                    Play
+                    <span>Play</span>
                 </button>
 
-                <input type="range" id="playbackBar" min="0" value="0" step=".05">
+                <div class="playbackBarContainer">
+                    <input type="range" id="playbackBar" class="playbackBar" min="0" value="0" step=".05">
+                </div>
 
                 <div class="time">
                     <span class="currentTime">0:00</span> / <span class="totalTime">0:00</span>
