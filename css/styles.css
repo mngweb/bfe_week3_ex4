@@ -19,12 +19,13 @@
     display:flex;
 }
 
-.controls > *{
+.controls > * {
+    flex: 1 1;
     margin-right: 20px;
 }
 
-.playbackBarContainer{
-    width: 70%;
+.playbackBarContainer {
+    flex-basis: 70%; 
 }
 
 .playbackBar{
@@ -32,6 +33,13 @@
     width: 100%;
 }
 
+
 .time{
     white-space: nowrap;
 }
+
+#playButton {
+    white-space: nowrap;
+    flex-basis: 80px;
+}
+
