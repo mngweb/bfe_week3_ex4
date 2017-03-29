@@ -15,16 +15,14 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             playbackBar = document.getElementById("playbackBar"),
             playButton = document.getElementById("playButton"),
             currentTime = document.querySelector(".currentTime"),
-            totalTime = document.querySelector(".totalTime");
-
+            totalTime = document.querySelector(".totalTime"),
+            i = playButton.querySelector("i");
 
         playbackBar.style.cursor = "pointer";
 
         playButton.onclick = function(){
 
-            var i = playButton.querySelector("i");
-
-            if(video.paused){
+           if(video.paused){
                 video.play();
 
                 i.classList.remove("fa-play");
@@ -74,7 +72,9 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
         }, false); 
 
         video.onended = function() {
-            playButton.innerHTML = "<i class='fa fa-play'></i>Play</i>";
+            i.classList.remove("fa-pause");
+            i.classList.add("fa-play");
+            this.querySelector("span").textContent = "Play";
         }
 
         video.addEventListener("canplay", function(){
