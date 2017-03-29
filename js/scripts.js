@@ -77,15 +77,9 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             playButton.innerHTML = "<i class='fa fa-play'></i>Play</i>";
         }
 
-
-        //PYTANIE: Poniższe przypisanie długości trwania filmu nie zawsze działa dobrze przy każdym wczytaniu strony (złe zdarzenie?) tzn. czasem pisze 0:00 zamiast 0:12 a czasem jest ok - dlaczego? W tych samych momentach kiedy ten czas całkowity jest dobrze wczytany, to też input typu range przyjmuje wskazaną szerokość.
-        video.addEventListener("durationchange", function(){
+        video.addEventListener("canplay", function(){
             totalTime.innerHTML = formatTime(video.duration);
         }, false);
-
-        // video.addEventListener("canplay", function(){
-        //     totalTime.innerHTML = formatTime(video.duration);
-        // }, false);
       
       
     }, false);    
