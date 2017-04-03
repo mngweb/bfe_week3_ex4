@@ -54,7 +54,7 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
         };
 
 
-        formatTime = function(seconds) { 
+        var formatTime = function(seconds) { 
             var seconds = Math.round(seconds), 
                 minutes = Math.floor(seconds / 60),
                 remainingSeconds = seconds - minutes * 60; 
