@@ -46,7 +46,9 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
         }, false);
 
         video.addEventListener("timeupdate", function(e){
-            playbackBar.value = e.target.currentTime;
+            var percentPlayed = (e.target.currentTime / e.target.duration) * 100; 
+            playbackBar.value = percentPlayed;             
+            //playbackBar.value = e.target.currentTime;
         }, false);
 
         playbackBar.onchange = function(){
@@ -67,7 +69,7 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             return minutes + ":" + remainingSeconds;
         }
 
-        video.addEventListener("timeupdate", function(){
+        video.addEventListener("timeupdate", function(){         
             currentTime.innerHTML = formatTime(video.currentTime); 
         }, false); 
 
