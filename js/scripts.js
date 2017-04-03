@@ -76,7 +76,7 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
         video.onended = function() {
             i.classList.remove("fa-pause");
             i.classList.add("fa-play");
-            this.querySelector("span").textContent = "Play";
+            playButton.querySelector("span").textContent = "Play";
         }
 
         video.addEventListener("canplay", function(){
