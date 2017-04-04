@@ -39,12 +39,6 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             }
         };
 
-
-        video.addEventListener("durationchange", function(){
-            playbackBar.min = 0;
-            playbackBar.max = video.duration;
-        }, false);
-
         video.addEventListener("timeupdate", function(e){
             var percentPlayed = (e.target.currentTime / e.target.duration) * 100; 
             playbackBar.value = percentPlayed;             
