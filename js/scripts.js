@@ -44,6 +44,16 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             playbackBar.value = percentPlayed;             
             //playbackBar.value = e.target.currentTime;
         }, false);
+        
+         playbackBar.oninput = function(e) {
+            var newTime = video.duration * parseInt(e.target.value) / 100;
+            video.currentTime = newTime;
+
+            console.log("całkowity czas: " + video.duration);
+            console.log("pozycja suwaka: " + e.target.value);
+            console.log("%c NOWY CZAS: " + newTime, 'color: red');
+
+        };       
 
         playbackBar.onchange = function(){
             video.currentTime = playbackBar.value;
