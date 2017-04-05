@@ -44,11 +44,11 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
             playbackBar.value = percentPlayed;             
         }, false);
         
-		playbackBar.oninput = function(e) {
-			var newTime = video.duration * parseInt(e.target.value) / 100;
-			video.currentTime = newTime;
-			currentTime.innerHTML = formatTime(newTime);	   
-		};		
+	playbackBar.oninput = function(e) {
+		var newTime = video.duration * parseInt(e.target.value) / 100;
+		video.currentTime = newTime;
+		//currentTime.innerHTML = formatTime(newTime);	   
+	};		
 
         var formatTime = function(seconds) { 
             var seconds = Math.round(seconds), 
