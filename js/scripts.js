@@ -6,77 +6,82 @@ Porada: aby ułatwić sobie życie, jako pasek postępu wykorzystać możesz ele
 
 
 (function(){
-    
+	
     document.addEventListener("DOMContentLoaded", function() {
+		
+		var videoPlayer = document.getElementById("videoPlayer"),
+			video = document.getElementById("video"),
+			playbackBar = document.getElementById("playbackBar"),
+			playButton = document.getElementById("playButton"),
+			currentTime = document.querySelector(".currentTime"),
+			totalTime = document.querySelector(".totalTime"),
+			i = playButton.querySelector("i");
 
 
-        var videoPlayer = document.getElementById("videoPlayer"),
-            video = document.getElementById("video"),
-            playbackBar = document.getElementById("playbackBar"),
-            playButton = document.getElementById("playButton"),
-            currentTime = document.querySelector(".currentTime"),
-            totalTime = document.querySelector(".totalTime"),
-            i = playButton.querySelector("i");
+		playbackBar.style.cursor = "pointer";
 
-        playbackBar.style.cursor = "pointer";
+		
+		var formatTime = function(seconds) { 
+			var seconds = Math.round(seconds), 
+				minutes = Math.floor(seconds / 60),
+				remainingSeconds = seconds - minutes * 60; 
 
-        playButton.onclick = function(){
+			if(remainingSeconds == 0)
+				remainingSeconds = "00";
+			else if(remainingSeconds < 10)
+				remainingSeconds = "0" + remainingSeconds;
 
-           if(video.paused){
-                video.play();
+			return minutes + ":" + remainingSeconds;
+		}		
+		
+		video.addEventListener("canplay", function(){
+		    totalTime.innerHTML = formatTime(video.duration);
+		}, false);
 
-                i.classList.remove("fa-play");
-                i.classList.add("fa-pause");
-                this.querySelector("span").textContent = "Pause";
-
-            }else{
-                video.pause();
-
-                i.classList.remove("fa-pause");
-                i.classList.add("fa-play");
-                this.querySelector("span").textContent = "Play";        
-
-            }
-        };
-
-        video.addEventListener("timeupdate", function(e){
+		
+		video.addEventListener("timeupdate", function(e){
             var percentPlayed = (e.target.currentTime / e.target.duration) * 100; 
-            playbackBar.value = percentPlayed;             
-        }, false);
-        
-	playbackBar.oninput = function(e) {
-		var newTime = video.duration * parseInt(e.target.value) / 100;
-		video.currentTime = newTime;
-		//currentTime.innerHTML = formatTime(newTime);	   
-	};		
+            playbackBar.value = percentPlayed;   
+			currentTime.innerHTML = formatTime(video.currentTime); 
+		}, false);
+		
 
-        var formatTime = function(seconds) { 
-            var seconds = Math.round(seconds), 
-                minutes = Math.floor(seconds / 60),
-                remainingSeconds = seconds - minutes * 60; 
+		video.onended = function() {
+			i.classList.remove("fa-pause");
+			i.classList.add("fa-play");
+			playButton.querySelector("span").textContent = "Play";
+		}		
+		
+		
+		playButton.onclick = function(){
 
-            if(remainingSeconds == 0)
-                remainingSeconds = "00";
-            else if(remainingSeconds < 10)
-                remainingSeconds = "0" + remainingSeconds;
+			if(video.paused){
+				video.play();
 
-            return minutes + ":" + remainingSeconds;
-        }
+				i.classList.remove("fa-play");
+				i.classList.add("fa-pause");
+				this.querySelector("span").textContent = "Pause"
 
-        video.addEventListener("timeupdate", function(){         
-            currentTime.innerHTML = formatTime(video.currentTime); 
-        }, false); 
+			}else{
+				video.pause();
 
-        video.onended = function() {
-            i.classList.remove("fa-pause");
-            i.classList.add("fa-play");
-            playButton.querySelector("span").textContent = "Play";
-        }
+				i.classList.remove("fa-pause");
+				i.classList.add("fa-play");
+				this.querySelector("span").textContent = "Play";         
 
-        video.addEventListener("canplay", function(){
-            totalTime.innerHTML = formatTime(video.duration);
-        }, false);
-      
-      
-    }, false);    
+			}
+		};
+
+
+		playbackBar.oninput = function(e) {
+			var newTime = video.duration * parseInt(e.target.value) / 100;
+			video.currentTime = newTime;
+			//currentTime.innerHTML = formatTime(newTime);	   
+		};		
+
+
+
+
+    }, false);  		
+		
 })();
